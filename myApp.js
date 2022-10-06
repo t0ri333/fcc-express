@@ -6,6 +6,18 @@ app.use(function middleware(req, res, next) {
   next();
 });
 
+app.get("/:word/echo",(req, res)=> {
+  const { word } = req.params;
+  res.json({
+    echo: word
+  });
+});
+
+app.get("/name", (req, res) => {
+  const { first, last} = req.query;
+  res.json({name: first + " " + last})
+})
+
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/views/index.html');
 });
